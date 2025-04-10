@@ -1,0 +1,10 @@
+{
+  "name": "PlaywrightPlayTests",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/nat-romanska/PlaywrightPlayTests.git",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.51.1"
+  }
+}
