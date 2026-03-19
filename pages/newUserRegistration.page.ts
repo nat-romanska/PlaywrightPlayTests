@@ -1,5 +1,5 @@
 import { Locator, Page } from "@playwright/test";
-
+import { RegistrationData } from "../types";
 export class NewUserRegistrationPage {
 
     readonly signupName: Locator;
@@ -26,7 +26,7 @@ export class NewUserRegistrationPage {
         this.signupName = page.locator('[data-qa="signup-name"]');
         this.signupEmail = page.locator('[data-qa="signup-email"]');
         this.signupButton = page.locator('[data-qa="signup-button"]');
-        this.genderMr = page.locator('label[for="id_gender1"]');
+        this.genderMr = page.locator('#id_gender1');
         this.password = page.locator('[data-qa="password"]');
         this.days = page.locator('[data-qa="days"]');
         this.months = page.locator('[data-qa="months"]');
@@ -42,16 +42,16 @@ export class NewUserRegistrationPage {
         this.zipcode = page.locator('[data-qa="zipcode"]');
         this.mobileNumber = page.locator('[data-qa="mobile_number"]');
         this.createAccount = page.locator('[data-qa="create-account"]');
-      }
-    
-      async fillSignupForm(name: string, email: string) {
+    }
+
+    async fillSignupForm(name: string, email: string) {
         await this.signupName.fill(name);
         await this.signupEmail.fill(email);
         await this.signupButton.click();
-      }
-    
-      async fillAccountInfo(userData: any) {
-        await this.genderMr.click();
+    }
+
+    async fillAccountInfo(userData: RegistrationData) {
+        await this.genderMr.check();
         await this.password.fill(userData.password);
         await this.days.selectOption(userData.day);
         await this.months.selectOption(userData.month);
@@ -66,12 +66,10 @@ export class NewUserRegistrationPage {
         await this.city.fill(userData.city);
         await this.zipcode.fill(userData.zipcode);
         await this.mobileNumber.fill(userData.mobile);
-      }
-    
-      async submitAccount() {
+    }
+
+    async submitAccount() {
         await this.createAccount.click();
-      }
-
-
+    }
 }
 

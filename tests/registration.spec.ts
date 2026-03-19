@@ -9,7 +9,7 @@ test('Register User', async ({ page }) => {
 
     //when
     await page.goto('/')
-    await cookiesConsentPage.cookiesConsentButton.click()
+    await cookiesConsentPage.accept()
 
     await page.click('a[href="/login"]')
 
